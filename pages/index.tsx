@@ -1,9 +1,6 @@
-import { Inter } from "@next/font/google";
 import Navigation from "@/components/Navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     return (

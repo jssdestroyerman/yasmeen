@@ -1,7 +1,8 @@
 import Navigation from "@/components/Navigation";
 import { Great_Vibes } from "@next/font/google";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
+import ScrollArrow from "@/components/ScrollArrow";
+import { useEffect, useState } from "react";
 
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" });
 
@@ -38,7 +39,19 @@ const lastName = {
     },
 };
 
-function yasmeen() {
+function Yasmeen() {
+    const { scrollYProgress } = useScroll();
+    const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1.25]);
+
+    const [canScroll, setCanScroll] = useState(false);
+    useEffect(() => {
+        if (canScroll === false) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "visible";
+        }
+    }, [canScroll]);
+
     return (
         <div>
             <motion.div
@@ -46,6 +59,7 @@ function yasmeen() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
+                onAnimationComplete={() => setCanScroll(true)}
             >
                 <div className="w-[90%] lg:w-[1000px] mx-auto font-semibold text-sm">
                     <Navigation url={"/"} />
@@ -109,6 +123,7 @@ function yasmeen() {
                         transition={{ duration: 1.4 }}
                     >
                         <motion.img
+                            style={{ scale: scale }}
                             src={"/yasmeen.webp"}
                             alt="yasmeen"
                             initial={{ scale: 1.1 }}
@@ -117,15 +132,18 @@ function yasmeen() {
                                 transition: { duration: 1 },
                             }}
                         />
+                        <div className="absolute top-[50%] translate-y-[-50%] left-8">
+                            <ScrollArrow />
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>
 
             <div className="w-[90%] lg:w-[1000px] mx-auto font-semibold text-sm flex justify-between py-20">
-                <h2 className="w-[20%]">
+                <h2 className="w-[30%] text-2xl">
                     The insiration behind the artwork & <br /> what it means.
                 </h2>
-                <p className="w-[50%]">
+                <p className="w-[60%] text-xl font-medium">
                     Contrary to popular belief, Lorem Ipsum is not simply random
                     text. It has roots in a piece of classical Latin literature
                     from 45 BC, making it over 2000 years old. Richard
@@ -146,4 +164,4 @@ function yasmeen() {
     );
 }
 
-export default yasmeen;
+export default Yasmeen;
