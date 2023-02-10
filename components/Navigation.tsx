@@ -10,9 +10,11 @@ function Navigation({ url }: Props) {
             <Link href={url}>
                 <h1>JIMMY FERMIN</h1>
             </Link>
-            <button className="border-[1px] border-black w-16 h-16 rounded-full">
-                MENU
-            </button>
+            <Link href={url}>
+                <button className="border-[1px] border-black w-16 h-16 rounded-full">
+                    MENU
+                </button>
+            </Link>
         </nav>
     );
 }

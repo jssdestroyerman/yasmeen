@@ -7,7 +7,9 @@ export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     return (
         <AnimatePresence initial={false} mode="wait">
-            <Component {...pageProps} key={router.route} />
+            <div className="bg-[#f0d8bb]" key={router.route}>
+                <Component {...pageProps} />
+            </div>
         </AnimatePresence>
     );
 }

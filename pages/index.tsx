@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     return (
-        <div className="bg-[#f0d8bb] h-[100vh] relative">
+        <div className="h-[100vh] relative">
             <div className="w-[90%] lg:w-[1000px] mx-auto font-semibold text-sm">
                 <Navigation url={"/"} />
                 <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
