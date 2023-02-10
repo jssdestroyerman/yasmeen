@@ -8,28 +8,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
     return (
-        <div className="bg-[#f0d8bb] h-[100vh]">
+        <div className="bg-[#f0d8bb] h-[100vh] relative">
             <div className="w-[90%] lg:w-[1000px] mx-auto font-semibold text-sm">
                 <Navigation />
-                <main className="flex justify-center pt-40">
-                    <div>
-                        <Link href={"/yasmeen"}>
-                            <Image
-                                src={"/yasmeen.webp"}
-                                width={400}
-                                height={500}
-                                alt="yasmeen"
-                            />
-                        </Link>
-                        <div className="flex justify-between py-4">
-                            <p>YASMEEN TARIQ</p>
-                            <p>
-                                <span>28.538336</span>
-                                <span>-81.379234</span>
-                            </p>
-                        </div>
-                    </div>
-                </main>
+                <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    <Link href={"/yasmeen"}>
+                        <Image
+                            src={"/yasmeen.webp"}
+                            width={400}
+                            height={500}
+                            alt="yasmeen"
+                        />
+                    </Link>
+                </div>
             </div>
         </div>
     );
