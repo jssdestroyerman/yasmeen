@@ -6,11 +6,7 @@ import { motion } from "framer-motion";
 const greatVibes = Great_Vibes({ subsets: ["latin"], weight: "400" });
 
 const firstName = {
-    initial: {
-        y: 0,
-    },
     animate: {
-        y: 0,
         transition: {
             delayChildren: 0.6,
             staggerChildren: 0.04,
@@ -22,14 +18,25 @@ const firstName = {
 const letter = {
     initial: {
         y: 400,
+        opacity: 0,
+        transition: { delay: 1 },
     },
     animate: {
         y: 0,
+        opacity: 1,
         transition: { duration: 1 },
     },
 };
 
-const lastName = {};
+const lastName = {
+    animate: {
+        transition: {
+            delayChildren: 0.6,
+            staggerChildren: 0.04,
+            staggerDirection: 1,
+        },
+    },
+};
 
 function yasmeen() {
     return (
@@ -44,7 +51,15 @@ function yasmeen() {
                     <Navigation url={"/"} />
 
                     <main className="mt-40">
-                        <div className="flex justify-between items-center">
+                        <motion.div
+                            className="flex justify-between items-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                transition: { duration: 0.5, delay: 1.4 },
+                            }}
+                        >
                             <div>
                                 <span>28.538336</span>
                                 <span>-81.379234</span>
@@ -52,27 +67,39 @@ function yasmeen() {
                             <div className="mua uppercase">
                                 MUA: @mylifeascrystall
                             </div>
-                        </div>
+                        </motion.div>
 
                         <motion.h1
                             className={`text-[170px] text-center mt-32 ${greatVibes.className}`}
                         >
-                            <motion.span variants={firstName}>
-                                <motion.span variants={letter}>Y</motion.span>
-                                <motion.span variants={letter}>a</motion.span>
-                                <motion.span variants={letter}>s</motion.span>
-                                <motion.span variants={letter}>m</motion.span>
-                                <motion.span variants={letter}>e</motion.span>
-                                <motion.span variants={letter}>e</motion.span>
-                                <motion.span variants={letter}>n</motion.span>
+                            <motion.span
+                                variants={firstName}
+                                className="inline-block"
+                            >
+                                {Array.from("Yasmeen").map((lettre, index) => (
+                                    <motion.span
+                                        variants={letter}
+                                        key={index}
+                                        className="inline-block"
+                                    >
+                                        {lettre}
+                                    </motion.span>
+                                ))}
+                            </motion.span>{" "}
+                            <motion.span
+                                className="inline-block"
+                                variants={lastName}
+                            >
+                                {Array.from("Tariq").map((lettre, index) => (
+                                    <motion.span
+                                        className="inline-block"
+                                        key={index}
+                                        variants={letter}
+                                    >
+                                        {lettre}
+                                    </motion.span>
+                                ))}
                             </motion.span>
-                            {/* <motion.span className="last" variants={lastName}>
-                                <motion.span variants={letter}>T</motion.span>
-                                <motion.span variants={letter}>a</motion.span>
-                                <motion.span variants={letter}>r</motion.span>
-                                <motion.span variants={letter}>i</motion.span>
-                                <motion.span variants={letter}>q</motion.span>
-                            </motion.span> */}
                         </motion.h1>
                     </main>
                     <motion.div
@@ -87,8 +114,8 @@ function yasmeen() {
                             initial={{ scale: 1.1 }}
                             animate={{
                                 y: -900,
+                                transition: { duration: 1 },
                             }}
-                            transition={{ duration: 1.4 }}
                         />
                     </motion.div>
                 </div>
